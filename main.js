@@ -41,7 +41,7 @@ const pies = [
       document.getElementById(divId).innerHTML = stringToPrint;
   }
 
-  cardBuilder = (pieArr) => {
+  const cardBuilder = (pieArr) => {
       // build giant string of pie cards
       let domString = '<div class="row">';
       for (i = 0; i < pieArr.length; i++) {
@@ -63,3 +63,25 @@ const pies = [
   };
 
   cardBuilder(pies);
+
+  const buttonClick = (event) => {
+    const instructor = event.target.id
+    const selectedInstructor = []
+   for (i = 0; i < pies.length; i++) {
+    const pie = pies[i];
+    if (pie.instructor === instructor) {
+      selectedInstructor.push(pie)
+    };
+  };
+
+  if (instructor === 'all') {
+   cardBuilder(pies);
+  } else {
+    cardBuilder(selectedInstructor)
+  };
+};
+
+document.getElementById('zoe').addEventListener('click', buttonClick);
+document.getElementById('michael').addEventListener('click', buttonClick);
+document.getElementById('callan').addEventListener('click', buttonClick);
+document.getElementById('all').addEventListener('click', buttonClick);
